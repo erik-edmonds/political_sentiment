@@ -10,5 +10,7 @@ election_date DATE, sponsor_candidate TEXT, internal TEXT, partisan TEXT,
 tracking TEXT, nationwide_batch TEXT, ranked_choice_reallocated TEXT,
 created_at DATETIME, notes TEXT, url TEXT, stage TEXT, answer TEXT, candidate_name TEXT, candidate_party TEXT, pct DECIMAL);
 ALTER TABLE senate ROW_FORMAT=DYNAMIC;
-LOAD DATA LOCAL INFILE 'senate_polls.csv' INTO TABLE senate;
+LOAD DATA LOCAL INFILE 'senate_polls.csv' INTO TABLE senate
+FIELDS TERMINATED BY ','
+IGNORE 1 ROWS;
 " 
