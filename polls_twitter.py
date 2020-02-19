@@ -63,7 +63,7 @@ def twitter_connection(*args,native=False, **kwargs):
     return tweepy.API(oauth)
 
 
-def get_tweet_stream(listener, auth, queries, duration = 300):
+def get_tweet_stream(listener, api, queries, duration = 300):
     """Opens up a stream, and runs for a set duration (in seconds).
     Default is 5 minutes"""
     stream = tweepy.Stream(auth.auth, listener = listener)
