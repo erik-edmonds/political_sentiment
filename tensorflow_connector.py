@@ -1,4 +1,4 @@
-import subprocess, pyspark
+import numpy as np
 from pyspark.sql import SparkSession
 from pyspark import SparkConf
 from py4j import protocol
@@ -17,6 +17,10 @@ def create_session():
         .config("spark.mongodb.output.uri", "mongodb://127.0.0.1/data.collection") \
         .getOrCreate()
     return this
+    
+def dataframe_tf(session, columns):
+    df = session.read.format("mongo").load()
+    return np.array(df.select(columns).collect())
     
 if __name__ == '__main__':
     try:
